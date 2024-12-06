@@ -3,7 +3,7 @@ import sys
 from aoctools import *
 import re
 import numpy as np
-
+debug = False
 
 def readfile(file):
     with open(file) as f:
@@ -39,19 +39,17 @@ def rules_check (rules, manual):
     return min(rule_res) == True, violated_rules
 
 rules = readfile('./data/input_day_5_rules.txt')
-
-manuals = readfile('./data/input_day_5_manuals.txt')
-good_list = [69, 17, 83]
-bad_list = [17, 69, 83]
-
-# part1
-
 rules = splitlines(rules, '|')
-
+manuals = readfile('./data/input_day_5_manuals.txt')
 manuals = splitlines(manuals, ',')
 
-# print(manuals)
+
 ans=0
+
+
+
+good_list = [69, 17, 83]
+bad_list = [17, 69, 83]
 
 
 for manual in manuals:
@@ -61,9 +59,11 @@ for manual in manuals:
         # print(manual,  manual[middle_index])
         ans += manual[middle_index]
     else:
-        print(failed_rules, manual)
+        if debug:
+            print(failed_rules, manual)
+        pass
 
-print(ans)
+print(f'\nTodays answer is: {ans}\n')
     
 
 
